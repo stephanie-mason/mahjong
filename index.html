@@ -10,11 +10,14 @@
         --bg-c1: #2b080d;
         --bg-c2: #310a10;
         --bg-c3: transparent;
+        --bg-layer: rgba(77, 41, 32, 0.6);
         
         --text: #c5bfa2;
         --links: #ffffff;
         
         --space--md: 1em;
+        
+        --content-max-width: 850px;
     }
     body {      
         --circle: var(--bg-c3) 6px, var(--bg-c2) 7px 8px, var(--bg-c3) 9px 14px,
@@ -30,32 +33,61 @@
         background-color: var(--bg-c1);
         
         color: var(--text);
+    }       
+    main, header, footer {
+        max-width: var(--content-max-width);
+        margin: auto;
     }
     a {
         color: var(--links);
+    }
+    h2, h3 {
+        padding: var(--space--md);
+        margin-top: calc(-1 * var(--space--md));
+        margin-left: calc(-1 * var(--space--md));
+        background-color: var(--bg-layer);
+        margin-top: 0;
     }
     .align-center {
         margin: auto;
         text-align: center;
     }
-    .card {
-        --card-bg: rgba(77, 41, 32, 0.6);
-        background-color: var(--card-bg);
+    .card {        
+        background-color: var(--bg-layer);
         padding: var(--space--md);
         margin-bottom: var(--space--md);
-    }
-    .card h3 {
-        padding: var(--space--md);
-        margin-top: calc(-1 * var(--space--md));
-        margin-left: calc(-1 * var(--space--md));
-        background-color: var(--card-bg);
-        margin-top: 0;
     }
     .date {
         font-weight: bold;
     }
     .location {
         font-style: italic;
+    }
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted var(--text); /* Add dots under the hoverable text */
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .tooltiptext {
+        visibility: hidden; 
+        width: 200px;
+        background-color: var(--text);
+        color: var(--bg-c2);
+        padding: var(--space--md);
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1; 
+        font-weight: lighter;
+    }    
+    .tooltip:hover .tooltiptext,
+    .tooltip:focus .tooltiptext {
+        visibility: visible;
+    }
+    
+    footer {
+        min-height: 3em;
     }
     
 </style>
@@ -66,9 +98,10 @@
     </header>
     <main>            
         <p>
-            Bimonthly (<strong>even<a href="#notes">*</a></strong> Mondays) at Stephanie's house from 6-8pm, unless otherwise noted. Tea and soft drinks will be provided.
+            Bimonthly (<span class="tooltip">even* <span class="tooltiptext">First two even Mondays only. If there are 3 even Mondays in a given month, we skip the last one.</span></span> Mondays) 
+            at Stephanie's house from <span class="tooltip">6-8pm* <span class="tooltiptext">It takes about 25 minutes to get to Stephanie's house from Bellingham, so you should block out 5:30-8:30pm on your schedule.</span></span>, 
+            unless otherwise noted. Tea and soft drinks will be provided.
         </p>
-        <p>It takes about 25 minutes to get to Stephanie's house from Bellingham, so you should block out 5:30-8:30pm on your schedule.</p>
         
         <h2>Schedule</h2>
         <div class="card">
@@ -87,7 +120,7 @@
                             <li>Individual rounds will not be scored</li>
                         </ul>
                     </li>
-                    <li>Learn the differences between Chinese & American Mahjong, with general information about scoring systems</li>
+                    <li>Learn the <a href="https://www.mahjiku.com/mahjong/compare/american-vs-chinese-official.html">differences between Chinese & American Mahjong</a>, with general information about scoring systems</li>
                 </ul>
             </div>            
         </div>
@@ -97,7 +130,7 @@
             <div class="location">Stephanie's House</div>
             <div class="description">
                 <p>No new information, just practicing what we learned last time. Play a few rounds without scoring.</p>
-                <p>We should also discuss which version of Mahjong we would like to dive into - Chinese or American, so we can decide which scoring system we want to put effort into learning.</p>
+                <p>We should also discuss which version of Mahjong we would like to dive into - Chinese or American (or another variant??), so we can decide which scoring system we want to put effort into learning.</p>
             </div>            
         </div>
         <div class="card">
@@ -105,30 +138,38 @@
             <div class="date">Dec 14, 2026, 6pm-8pm</div>
             <div class="location">Stephanie's House</div>
             <div class="description">
-                <p>Dive into the scoring system of the version of mahjong we would like to play. If American, learn the setup & basic
-                    gameplay of that version. Play some rounds of mahjong, and start keeping score. </p>
-                </div>            
-            </div>
-            <div class="card">
-                <h3>Let's Play Mahjong</h3>
-                <div class="date">Dec 28, 2026, 6pm-8pm</div>
-                <div class="location">Stephanie's House</div>
-                <div class="description">
-                    <p>Play some mahjong. Continue learning how to score, and start discussing general strategy.</p>
-                </div>            
-            </div>
-            <!--div class="card">
-            <h3>Title</h3>
-            <div class="date">Nov 2, 2026, 6pm-8pm</div>
+                <p>
+                    Dive into the scoring system of the version of mahjong we would like to play. If American, learn the setup & basic
+                    gameplay of that version. Play some rounds of mahjong, and start keeping score. 
+                </p>
+            </div>            
+        </div>
+        <div class="card">
+            <h3>Let's Play Mahjong</h3>
+            <div class="date">Dec 28, 2026, 6pm-8pm</div>
             <div class="location">Stephanie's House</div>
             <div class="description">
-                <p></p>
+                <p>Play some mahjong. Continue learning how to score, and start discussing general strategy.</p>
             </div>            
-            </div-->
-        </main>
-        <footer>
-            <p id="notes">*First two even Mondays only. If there are 3 even Mondays in a given month, we will skip the last one.</p>
-        </footer>
-    </body>
-    
-    </html>
+        </div>
+        <!--div class="card">
+        <h3>Title</h3>
+        <div class="date">Nov 2, 2026, 6pm-8pm</div>
+        <div class="location">Stephanie's House</div>
+        <div class="description">
+            <p></p>
+        </div>            
+        </div-->
+        
+        <h2>Resources</h2>
+        <ul>
+            <li><a href="https://playmahjong.io">playmahjong.io</a> - <strong>Chinese International Mahjong</strong> free to play in the browser, with an easy to read scoring gude and how to play guide</li>
+            <li><a href="https://www.mahjiku.com/index.html">Mahjiku</a> - Scoring app for <strong>Hong Kong</strong> Mahjong. Lots of great info on their site, including <a href="https://www.mahjiku.com/mahjong/index.html">comparisons between variants</a>.</li>
+            <li><a href="https://www.themahjongapp.com/">The Mahjong App</a> - <strong>American Mahjong</strong> app, with high ratings. Teaches you how to play with a tutorial & suggested hands. Has the official NMJL card for scoring, or you can play with alternate scoring rules. Free to play against bots with ads, plus various paid options.</li>
+        </ul>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>
