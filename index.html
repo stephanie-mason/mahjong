@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <style>
+    
     :root {
         --bg-c1: #2b080d;
         --bg-c2: #310a10;
         --bg-c3: transparent;
         --bg-layer: rgba(77, 41, 32, 0.6);
+        --bg-layer--dark: rgba(30, 10, 13, 0.4);
         
         --text: #c5bfa2;
         --links: #ffffff;
@@ -41,12 +43,47 @@
     a {
         color: var(--links);
     }
-    h2, h3 {
+    h2, h3, h4 {
         padding: var(--space--md);
         margin-top: calc(-1 * var(--space--md));
         margin-left: calc(-1 * var(--space--md));
         background-color: var(--bg-layer);
         margin-top: 0;
+    }
+    details {
+        margin-bottom: var(--space--md);
+    }
+    details h3,
+    details h4,
+    details .card {
+        background-color: var(--bg-layer--dark);
+    }
+    summary {
+        display: block;
+        cursor: pointer;        
+    }
+    summary h3{
+        position: relative;
+        padding-left: 2.2rem;
+        margin-bottom: 0;
+    }
+    summary h3:before {
+        content: '';
+        border-width: .4rem;
+        border-style: solid;
+        border-color: transparent transparent transparent var(--text);
+        position: absolute;
+        top: 1.7rem;
+        left: 1rem;
+        transform: rotate(0);
+        transform-origin: .2rem 50%;
+        transition: .25s transform ease;
+    }
+    details[open] > summary h3:before {
+        transform: rotate(90deg);
+    }
+    details summary h3::-webkit-details-marker {
+        display:none;
     }
     .align-center {
         margin: auto;
@@ -89,7 +126,6 @@
     footer {
         min-height: 3em;
     }
-    
 </style>
 
 <body>
@@ -104,72 +140,77 @@
         </p>
         
         <h2>Schedule</h2>
+        <details>
+            <summary><h3>Past</h3></summary>
+            <div class="card">
+                <h4>Foundations</h4>
+                <div class="date">Nov 2, 2026, 6pm-8pm</div>
+                <div class="location">Stephanie's House</div>
+                <div class="description">
+                    <p>Learn the basics of how to play Chinese Style Mahjong. I recommend watching <a href="https://youtu.be/fvnkizRHsB0?si=MB-8kqUh56QbV8TR">this video</a> beforehand.</p>
+                    <ul>
+                        <li>Learn about the tiles</li>
+                        <li>Learn how to set up the game</li>
+                        <li>Learn basics of gameplay and sets needed to win a round</li>
+                        <li>Play a few rounds, as time permits 
+                            <ul>
+                                <li>No detailed information on scoring yet</li>
+                                <li>Individual rounds will not be scored</li>
+                            </ul>
+                        </li>
+                        <li>Learn the <a href="https://www.mahjiku.com/mahjong/compare/american-vs-chinese-official.html">differences between Chinese & American Mahjong</a>, with general information about scoring systems</li>
+                    </ul>
+                </div>  
+            </div>
+        </details>
+        <h3>Upcoming</h3>
         <div class="card">
-            <h3>Foundations</h3>
+            <h4>Foundations 2</h4>
+            <div class="date">Nov 16, 2026, 6pm-8pm</div>
+            <div class="location">Stephanie's House</div>
+            <div class="description">                
+                <p>Hong Kong Mahjong! More or less a repeat of last time, going over the basics and playing some chicken hand rounds (eg no minimum faan/points). 
+                    We'll begin discussing scoring and can play around with <a href="https://www.mahjiku.com/index.html">Mahjiku</a> and/or other apps and resources to see what works well.</p>
+                    
+                    <p><a href="cheatsheet.png">Here is the printed cheatsheet</a> we used last time.</a></p>
+                </div>            
+            </div>
+            <div class="card">
+                <h4>Start Scoring</h4>
+                <div class="date">Dec 14, 2026, 6pm-8pm</div>
+                <div class="location">Stephanie's House</div>
+                <div class="description">
+                    <p>Spending more time learning the scoring system. We will play a few rounds and start keeping track of scorse, to the best of our abilities.</p>
+                </div>            
+            </div>
+            <div class="card">
+                <h4>Let's Play Mahjong</h4>
+                <div class="date">Dec 28, 2026, 6pm-8pm</div>
+                <div class="location">Stephanie's House</div>
+                <div class="description">
+                    <p>
+                        Play a few rounds of mahjong, and keep score. Show off any Mahjong related paraphenelia anyone may have received for Christmas.
+                    </p>
+                </div>            
+            </div>
+            <!--div class="card">
+            <h4>Title</h4>
             <div class="date">Nov 2, 2026, 6pm-8pm</div>
             <div class="location">Stephanie's House</div>
             <div class="description">
-                <p>Learn the basics of how to play Chinese Style Mahjong. I recommend watching <a href="https://youtu.be/fvnkizRHsB0?si=MB-8kqUh56QbV8TR">this video</a> beforehand.</p>
-                <ul>
-                    <li>Learn about the tiles</li>
-                    <li>Learn how to set up the game</li>
-                    <li>Learn basics of gameplay and sets needed to win a round</li>
-                    <li>Play a few rounds, as time permits 
-                        <ul>
-                            <li>No detailed information on scoring yet</li>
-                            <li>Individual rounds will not be scored</li>
-                        </ul>
-                    </li>
-                    <li>Learn the <a href="https://www.mahjiku.com/mahjong/compare/american-vs-chinese-official.html">differences between Chinese & American Mahjong</a>, with general information about scoring systems</li>
-                </ul>
+                <p></p>
             </div>            
-        </div>
-        <div class="card">
-            <h3>Foundations 2</h3>
-            <div class="date">Nov 16, 2026, 6pm-8pm</div>
-            <div class="location">Stephanie's House</div>
-            <div class="description">
-                <p>More or less a repeat of last time. We can also touch on how American style Mahjong is set up & played compared to Chinese. (Scoring systems are very different, but basic set up is quite similar.)</p>
-            </div>            
-        </div>
-        <div class="card">
-            <h3>Scoring Basics</h3>
-            <div class="date">Dec 14, 2026, 6pm-8pm</div>
-            <div class="location">Stephanie's House</div>
-            <div class="description">
-                <p>No new information, just practicing what we learned last time. Play a few rounds without scoring.</p>
-                <p>We should also decide which version of Mahjong we would like to dive into - Chinese or American (or another variant??), so we know which scoring system we will to put effort into learning.</p>
-            </div>            
-        </div>
-        <div class="card">
-            <h3>Let's Play Mahjong</h3>
-            <div class="date">Dec 28, 2026, 6pm-8pm</div>
-            <div class="location">Stephanie's House</div>
-            <div class="description">
-                <p>
-                    Dive into the scoring system of the version of mahjong we would like to play. If American, learn the setup & basic
-                    gameplay of that version. Play some rounds of mahjong, and start keeping score.
-                </p>
-            </div>            
-        </div>
-        <!--div class="card">
-        <h3>Title</h3>
-        <div class="date">Nov 2, 2026, 6pm-8pm</div>
-        <div class="location">Stephanie's House</div>
-        <div class="description">
-            <p></p>
-        </div>            
-        </div-->
-        
-        <h2>Resources</h2>
-        <ul>
-            <li><a href="https://playmahjong.io">playmahjong.io</a> - <strong>Chinese International Mahjong</strong> free to play in the browser, with an easy to read scoring gude and how to play guide</li>
-            <li><a href="https://www.mahjiku.com/index.html">Mahjiku</a> - Scoring app for <strong>Hong Kong</strong> Mahjong. Lots of great info on their site, including <a href="https://www.mahjiku.com/mahjong/index.html">comparisons between variants</a>.</li>
-            <li><a href="https://www.themahjongapp.com/">The Mahjong App</a> - <strong>American Mahjong</strong> app, with high ratings. Teaches you how to play with a tutorial & suggested hands. Has the official NMJL card for scoring, or you can play with alternate scoring rules. Free to play against bots with ads, plus various paid options.</li>
-        </ul>
-    </main>
-    <footer>
-    </footer>
-</body>
-
-</html>
+            </div-->
+            
+            <h2>Resources</h2>
+            <ul>
+                <li><a href="https://playmahjong.io">playmahjong.io</a> - <strong>Chinese International Mahjong</strong> free to play in the browser, with an easy to read scoring gude and how to play guide</li>
+                <li><a href="https://www.mahjiku.com/index.html">Mahjiku</a> - Scoring app for <strong>Hong Kong</strong> Mahjong. Lots of great info on their site, including <a href="https://www.mahjiku.com/mahjong/index.html">comparisons between variants</a>.</li>
+                <li><a href="https://www.themahjongapp.com/">The Mahjong App</a> - <strong>American Mahjong</strong> app, with high ratings. Teaches you how to play with a tutorial & suggested hands. Has the official NMJL card for scoring, or you can play with alternate scoring rules. Free to play against bots with ads, plus various paid options.</li>
+            </ul>
+        </main>
+        <footer>
+        </footer>
+    </body>
+    
+    </html>
